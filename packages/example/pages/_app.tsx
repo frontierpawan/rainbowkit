@@ -18,6 +18,7 @@ import {
   argentWallet,
   bitskiWallet,
   dawnWallet,
+  frontierWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
