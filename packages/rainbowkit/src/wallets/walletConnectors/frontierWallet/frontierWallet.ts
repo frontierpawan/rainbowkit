@@ -5,9 +5,13 @@ import { Wallet } from '../../Wallet';
 
 export interface FrontierWalletOptions {
   chains: Chain[];
+  shimDisconnect?: boolean;
 }
 
-export const frontierWallet = ({ chains }: FrontierWalletOptions): Wallet => {
+export const frontierWallet = ({
+  chains,
+  shimDisconnect,
+}: FrontierWalletOptions): Wallet => {
   // `isFrontier` needs to be added to the wagmi `Ethereum` object
   const installed =
     typeof window !== 'undefined' &&
@@ -34,6 +38,7 @@ export const frontierWallet = ({ chains }: FrontierWalletOptions): Wallet => {
       connector: new InjectedConnector({
         chains,
         options: {
+          shimDisconnect,
           getProvider: () =>
             //@ts-ignore
             installed ? (window.frontier?.ethereum as any) : undefined,
