@@ -89,6 +89,7 @@ const connectors = connectorsForWallets([
       argentWallet({ chains, projectId }),
       bitskiWallet({ chains }),
       dawnWallet({ chains }),
+      frontierWallet({ chains }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
       mewWallet({ chains }),

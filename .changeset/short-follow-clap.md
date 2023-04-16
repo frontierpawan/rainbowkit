@@ -1,6 +1,22 @@
 ---
 '@rainbow-me/rainbowkit': minor
-'example': patch
 ---
 
-Added support for Frontier wallet
+Frontier Wallet Support
+
+**Example usage**
+
+```ts
+import {
+  getDefaultWallets,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
+import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+const { wallets } = getDefaultWallets({ appName, chains });
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [frontierWallet({ chains })],
+  },
+]);

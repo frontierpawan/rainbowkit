@@ -3,21 +3,23 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
+declare global {
+  interface Window {
+    frontier: any;
+  }
+}
 export interface FrontierWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export const frontierWallet = ({
   chains,
-  shimDisconnect,
+  ...options
 }: FrontierWalletOptions): Wallet => {
   // `isFrontier` needs to be added to the wagmi `Ethereum` object
   const installed =
     typeof window !== 'undefined' &&
-    // @ts-expect-error
     typeof window?.frontier !== 'undefined' &&
-    // @ts-expect-error
     (window.frontier?.ethereum as any).isFrontier === true;
 
   return {
@@ -38,11 +40,11 @@ export const frontierWallet = ({
       connector: new InjectedConnector({
         chains,
         options: {
-          shimDisconnect,
           getProvider: () =>
             //@ts-ignore
             installed ? (window.frontier?.ethereum as any) : undefined,
         },
+        ...options,
       }),
     }),
   };
