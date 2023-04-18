@@ -30,12 +30,12 @@ export {
   ledgerWallet,
   metaMaskWallet,
   mewWallet,
+  okxWallet,
   omniWallet,
   rainbowWallet,
   safeWallet,
   tahoWallet,
   trustWallet,
-  okxWallet,
   walletConnectWallet,
   zerionWallet,
 };
