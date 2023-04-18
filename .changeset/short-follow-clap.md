@@ -20,3 +20,4 @@ const connectors = connectorsForWallets([
     wallets: [frontierWallet({ chains })],
   },
 ]);
+```
