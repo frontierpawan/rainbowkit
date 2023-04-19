@@ -1,5 +1,5 @@
 ---
-'@rainbow-me/rainbowkit': minor
+'@rainbow-me/rainbowkit': patch
 ---
 
 Frontier Wallet Support
